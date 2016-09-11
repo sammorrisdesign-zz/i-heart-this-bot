@@ -64,29 +64,21 @@ svg_to_png.convert(emojiPath, '.emojis', {
         img.src = emoji;
         ctx.drawImage(img, 550, 85, 360, 360);
 
-        // export once done
-        var out = fs.createWriteStream(__dirname + '/text.png'),
-            stream = canvas.pngStream();
+        // prep canvas for upload
+        var canvasToBuffer = canvas.toBuffer();
 
-        stream.on('data', function(chunk){
-            out.write(chunk);
-        });
-
-        stream.on('end', function(){
-            fs.readFile('./text.png', function(err, data) {
-                client.post('media/upload', {media: data}, function(error, media, response) {
-                    if (error) throw error;
-                    var status = {
-                        status:  'I ' + randomEmoji + ' ' + randomCity.city,
-                        media_ids: media.media_id_string,
-                        lat: randomCity.lat,
-                        long: randomCity.lon
-                    };
-                    client.post('statuses/update', status,  function(error, tweet, response) {
-                        if(error) throw error;
-                        console.log("tweet succesful");
-                    });
-                });
+        // make tweet
+        client.post('media/upload', {media: canvasToBuffer}, function(error, media, response) {
+            if (error) throw error;
+            var status = {
+                status:  'I ' + randomEmoji + ' ' + randomCity.city,
+                media_ids: media.media_id_string,
+                lat: randomCity.lat,
+                long: randomCity.lon
+            };
+            client.post('statuses/update', status,  function(error, tweet, response) {
+                if(error) throw error;
+                console.log("tweet succesful");
             });
         });
     });
