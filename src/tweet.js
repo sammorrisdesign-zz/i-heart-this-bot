@@ -18,6 +18,7 @@ var client = new Twitter({
 // randomise elements
 var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 var randomCity = cities.cities[Math.floor(Math.random() * cities.cities.length)];
+randomCity.city = decodeURIComponent(randomCity.city);
 
 // get twemoji svg file
 var emojiPath = './node_modules/twemoji/2/svg/' + basename(randomEmoji) + '.svg';
@@ -35,7 +36,7 @@ svg_to_png.convert(emojiPath, '.emojis', {
         ctx = canvas.getContext('2d');
 
     // fill background
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, 1200, 673);
 
     // load font
@@ -43,9 +44,9 @@ svg_to_png.convert(emojiPath, '.emojis', {
     ctx.addFont(americanTypewriter);
 
     // draw 'I'
-    ctx.fillStyle = "#333";
+    ctx.fillStyle = '#333';
     ctx.font = '490px AmericanTypewriter';
-    ctx.fillText("I", 280, 430);
+    ctx.fillText('I', 280, 430);
 
     // draw city name
     var citySize = 220;
@@ -83,7 +84,7 @@ svg_to_png.convert(emojiPath, '.emojis', {
             };
             client.post('statuses/update', status,  function(error, tweet, response) {
                 if(error) throw error;
-                console.log("tweet succesful");
+                console.log('tweet succesful');
             });
         });
     });

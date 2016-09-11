@@ -8,3 +8,7 @@ You'll then need to create a `twitter.json` file from the `twitter.example.json`
 
 ## Development
 You can run the main script `tweet.js` by using `npm run tweet`. This will send a tweet to [@ilikethiscity](https://twitter.com/ilikethiscity).
+
+## Credits
+List of cities from [`geodata`](https://github.com/mahemoff/geodata/blob/master/cities.jsonp)
+Emojis by [`twemoji`](https://github.com/twitter/twemoji)
