@@ -7,7 +7,7 @@ var basename = require('twemoji-basename')
 var svg_to_png = require('svg-to-png');
 
 // connect to twitter
-var keys = require('./twitter.json');
+var keys = require('../twitter.json');
 var client = new Twitter({
     consumer_key: keys.consumerKey,
     consumer_secret: keys.consumerSecret,
@@ -39,19 +39,19 @@ svg_to_png.convert(emojiPath, '.emojis', {
     ctx.fillRect(0, 0, 1200, 673);
 
     // load font
-    var americanTypewriter = new Font('AmericanTypewriter', './american-typewriter.ttf');
+    var americanTypewriter = new Font('AmericanTypewriter', './src/fonts/american-typewriter.ttf');
     ctx.addFont(americanTypewriter);
 
     // draw 'I'
     ctx.fillStyle = "#333";
-    ctx.font = '490px "AmericanTypewriter"';
+    ctx.font = '490px AmericanTypewriter';
     ctx.fillText("I", 280, 430);
 
     // draw city name
     var citySize = 220;
 
     while (citySize > 0) {
-        ctx.font = citySize + 'px "American Typewriter Bold"';
+        ctx.font = citySize + 'px AmericanTypewriter';
         width = ctx.measureText(randomCity.city.toUpperCase(), 280, 590).width;
 
         if (width < 640) {

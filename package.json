@@ -4,7 +4,7 @@
   "description": "A Twitter bot?",
   "main": "index.js",
   "scripts": {
-    "tweet": "node tweet.js"
+    "tweet": "node src/tweet.js"
   },
   "repository": {
     "type": "git",
