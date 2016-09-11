@@ -43,13 +43,11 @@ svg_to_png.convert(emojiPath, '.emojis', {
     ctx.fillText("I", 280, 430);
 
     // draw city name
-    var citySize = 240;
+    var citySize = 220;
 
     while (citySize > 0) {
         ctx.font = citySize + 'px "American Typewriter Bold"';
         width = ctx.measureText(randomCity.city.toUpperCase(), 280, 590).width;
-
-        console.log(citySize);
 
         if (width < 640) {
             ctx.fillText(randomCity.city.toUpperCase(), 280, 590);
@@ -76,12 +74,8 @@ svg_to_png.convert(emojiPath, '.emojis', {
 
         stream.on('end', function(){
             fs.readFile('./text.png', function(err, data) {
-                console.log(err);
-                console.log(data);
                 client.post('media/upload', {media: data}, function(error, media, response) {
-                    console.log(media);
                     if (error) throw error;
-                    console.log(media);
                     var status = {
                         status:  'I ' + randomEmoji + ' ' + randomCity.city,
                         media_ids: media.media_id_string,
@@ -89,8 +83,8 @@ svg_to_png.convert(emojiPath, '.emojis', {
                         long: randomCity.lon
                     };
                     client.post('statuses/update', status,  function(error, tweet, response) {
-                        console.log("tweet");
                         if(error) throw error;
+                        console.log("tweet succesful");
                     });
                 });
             });
