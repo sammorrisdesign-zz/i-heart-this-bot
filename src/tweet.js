@@ -49,7 +49,7 @@ svg_to_png.convert(emojiPath, '.emojis', {
     ctx.fillText('I', 280, 430);
 
     // draw city name
-    var citySize = 220;
+    var citySize = 200;
 
     while (citySize > 0) {
         ctx.font = citySize + 'px AmericanTypewriter';
