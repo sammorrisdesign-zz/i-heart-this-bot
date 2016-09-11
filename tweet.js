@@ -30,6 +30,7 @@ svg_to_png.convert(emojiPath, '.emojis', {
     // create canvas
     var Canvas = require('canvas'),
         Image = Canvas.Image,
+        Font = Canvas.Font,
         canvas = new Canvas(1200, 673),
         ctx = canvas.getContext('2d');
 
@@ -37,9 +38,13 @@ svg_to_png.convert(emojiPath, '.emojis', {
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, 1200, 673);
 
+    // load font
+    var americanTypewriter = new Font('AmericanTypewriter', './american-typewriter.ttf');
+    ctx.addFont(americanTypewriter);
+
     // draw 'I'
     ctx.fillStyle = "#333";
-    ctx.font = '490px "American Typewriter Bold"';
+    ctx.font = '490px "AmericanTypewriter"';
     ctx.fillText("I", 280, 430);
 
     // draw city name
