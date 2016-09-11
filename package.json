@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/sammorrisdesign/i-heart-locations#readme",
   "devDependencies": {
-    "canvas": "^1.4.0",
+    "canvas": "^1.1.0",
     "emojis-list": "^2.0.1",
     "mustache": "^2.2.1",
     "svg-to-png": "^3.1.0",
